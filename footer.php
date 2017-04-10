@@ -5,10 +5,12 @@
 
         <footer class="main-footer">
             <div class="container">
-                <p><small>Todo o conteúdo do Portal de PHP-PR foi licenciado com uma Licença <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.pt" target="_blank">Creative Commons - Atribuição-NãoComercial-SemDerivados 3.0 Não Adaptada</a>.</small></p>
-                <a href="https://app.umbler.com/u/mzkqd8j2">
-                    <img src="//static.umbler.com/brand/umbler-badges/umbler-badge-hostedby-dark-bg-mono.png" width="120px" alt="Hosted by Umbler">
-                </a>
+                <p>
+                    <a href="https://app.umbler.com/u/mzkqd8j2">
+                        <img src="//static.umbler.com/brand/umbler-badges/umbler-badge-hostedby-dark-bg-mono.png" width="120px" alt="Hosted by Umbler">
+                    </a>
+                </p>
+                <small>Todo o conteúdo do Portal de PHP-PR foi licenciado com uma Licença <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.pt" target="_blank">Creative Commons - Atribuição-NãoComercial-SemDerivados 3.0 Não Adaptada</a>.</small>
             </div>
             </div>
         </footer>
