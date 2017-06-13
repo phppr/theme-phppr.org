@@ -9,8 +9,9 @@
         'order' => 'ASC'
     );
     $events = new WP_Query( $args );
+    $nextEvents = 0;
 ?>
-<?php if( $events->have_posts() ): ?>
+<?php if( $events->have_posts() && $nextEvents > 0 ): ?>
     <section class="section container">
         <h2 class="section__title">Próximos Eventos</h2>
 
@@ -28,6 +29,7 @@
 
                         // $isRealized = ($timestamp_now >= $timestamp_date) ? true : false;
                         if($timestamp_date >= $timestamp_now):
+                            $nextEvents++;
                         ?>
                         <article class="col-md-4">
                             <div class="article">
@@ -66,8 +68,6 @@
             <a href="<?php echo esc_url( home_url( '/events' ) ); ?>" class="card__view-all">Ver todos</a>
         </div>
     </section>
-<?php else: ?>
-    <p>Nenhum evento por aqui... </p>
 <?php endif ?>
 
 <?php $query = new WP_Query( 'posts_per_page=4' ); ?>
