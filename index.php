@@ -13,7 +13,7 @@
 ?>
 <?php if( $events->have_posts() && $nextEvents > 0 ): ?>
     <section class="section container">
-        <h2 class="section__title">Próximos Eventos</h2>
+        <h2 class="section__title"><i class="icon icon-calendar" aria-hidden="true"></i> Próximos Eventos</h2>
 
         <div class="card">
             <div class="row">
@@ -73,7 +73,7 @@
 <?php $query = new WP_Query( 'posts_per_page=4' ); ?>
 <?php if ( $query->have_posts() ): ?>
     <section class="section container">
-        <h2 class="section__title">Artigos da comunidade</h2>
+        <h2 class="section__title"><i class="icon icon-file-text" aria-hidden="true"></i> Artigos da comunidade</h2>
 
         <div class="card">
             <div class="row">
@@ -115,7 +115,7 @@
 <section class="section container">
     <div class="row">
         <div class="col-md-6">
-            <h2 class="section__title">Avisos</h2>
+            <h2 class="section__title"><i class="icon icon-bell" aria-hidden="true"></i> Avisos</h2>
 
             <div class="card card--notifications">
                 <?php
@@ -139,7 +139,7 @@
             </div>
 
             <h2 class="section__title">
-                <a href="https://github.com/phppr/vagas" target="_blank">Vagas no Paraná</a>
+                <a href="https://github.com/phppr/vagas" target="_blank"><i class="icon icon-briefcase" aria-hidden="true"></i> Vagas no Paraná</a>
             </h2>
 
             <div class="card">

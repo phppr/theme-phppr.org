@@ -1,7 +1,7 @@
 <section class="section section--featured">
     <div class="container">
         <?php $members = get_users(); ?>
-        <h2 class="section__title"><?php echo count($members); ?> Membros</h2>
+        <h2 class="section__title"><i class="icon icon-users" aria-hidden="true"></i> <?php echo count($members); ?> Membros</h2>
 
         <ul class="member-list list-unstyled">
             <?php foreach($members as $member):
