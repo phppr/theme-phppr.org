@@ -78,14 +78,11 @@
         <div class="card">
             <div class="row">
                 <?php while ( $query->have_posts() ): $query->the_post(); ?>
-                    <?php $image = odin_get_image_url( $post->ID, '250', '150' ); ?>
                     <article class="col-md-3">
                         <div class="article">
                             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="article__thumb">
                                 <figure>
-                                    <?php if($image): ?>
-                                        <img src="<?php echo $image ?>" alt="Imagem do artigo <?php the_title(); ?>" class="img-responsive">
-                                    <?php endif; ?>
+                                    <?php echo odin_thumbnail( '250', '150', "Imagem do artigo {get_the_title()}", true, 'img-responsive') ?>
                                 </figure>
                             </a>
                             <header class="article__heading">
