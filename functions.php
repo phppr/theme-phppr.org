@@ -20,6 +20,8 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 600;
 }
 
+define('FORCE_SSL_ADMIN', true);
+
 /**
  * Odin Classes.
  */
