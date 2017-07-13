@@ -5,21 +5,32 @@
 
         <ul class="member-list list-unstyled">
             <?php foreach($members as $member):
-                $github_username = get_user_meta( $member->ID, 'github_username', true);
-                $github_avatar = "https://github.com/{$github_username}.png?size=200";
-                $github_url = get_user_meta( $member->ID, 'github_url', true);
-                $member_url = ($github_url) ? $github_url : $member->user_url;
+                $gravatarSettings['size'] = 140;
+                $githubUsername = get_user_meta( $member->ID, 'github_username', true);
+
+                if ($githubUsername) {
+                    $gravatarSettings['default'] = "https://github.com/{$githubUsername}.png?size=200";
+                }
+
+                $githubUrl = get_user_meta( $member->ID, 'github_url', true);
+                $memberUrl = ($githubUrl) ? $githubUrl : $member->user_url;
             ?>
                 <li class="member-list__item">
-                    <a href="<?php echo $member_url ?>" target="_blank">
-                        <img src="<?php echo get_avatar_url($member->user_email, array('size' => 140, 'default' => $github_avatar)) ?>" alt="Foto do perfil de <?php echo $member->display_name ?>" class="img-circle">
-                    </a>
+                    <?php if($memberUrl): ?>
+                        <a href="<?php echo $memberUrl ?>" target="_blank">
+                    <?php endif; ?>
 
-                    <?php if($github_username): ?>
+                        <img src="<?php echo get_avatar_url($member->user_email, $gravatarSettings) ?>" alt="Foto do perfil de <?php echo $member->display_name ?>" class="img-circle">
+
+                    <?php if($memberUrl): ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if($githubUsername): ?>
                         <span class="member-list__meta">
                             <i class="icon icon-github"></i>
-                            <a href="https://github.com/<?php echo $github_username ?>" target="_blank">
-                                /<?php echo $github_username ?>
+                            <a href="https://github.com/<?php echo $githubUsername ?>" target="_blank">
+                                /<?php echo $githubUsername ?>
                             </a>
                         </span>
                     <?php endif; ?>

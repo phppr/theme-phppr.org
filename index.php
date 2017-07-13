@@ -117,25 +117,27 @@
         <div class="col-md-6">
             <h2 class="section__title"><i class="icon icon-bell" aria-hidden="true"></i> Avisos</h2>
 
-            <div class="card card--notifications">
-                <?php
-                    $args = array( 'post_type' => 'notifications', 'posts_per_page' => 6 );
-                    $loop = new WP_Query( $args );
-                ?>
-                <?php if( $loop->have_posts() ): ?>
-                <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-                    <article class="article article--notifications">
-                        <header class="article__heading">
-                            <h2 class="article__title">
-                                <a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><?php the_title() ?></a>
-                            </h2>
-                        </header>
-                        <p><a href="<?php the_permalink() ?>"><?php echo odin_excerpt( 'excerpt', 10 ) ?> [Continue lendo]</a></p>
-                    </article>
-                <?php endwhile; ?>
-                <?php else: ?>
-                    <p>Nenhum aviso por aqui... </p>
-                <?php endif ?>
+            <div class="card">
+                <div class="card--notifications">
+                    <?php
+                        $args = array( 'post_type' => 'notifications', 'posts_per_page' => 6 );
+                        $loop = new WP_Query( $args );
+                    ?>
+                    <?php if( $loop->have_posts() ): ?>
+                    <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                        <article class="article article--notifications">
+                            <header class="article__heading">
+                                <h2 class="article__title">
+                                    <a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><?php the_title() ?></a>
+                                </h2>
+                            </header>
+                            <p><a href="<?php the_permalink() ?>"><?php echo odin_excerpt( 'excerpt', 10 ) ?> [Continue lendo]</a></p>
+                        </article>
+                    <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>Nenhum aviso por aqui... </p>
+                    <?php endif ?>
+                </div>
             </div>
 
             <h2 class="section__title">
