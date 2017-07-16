@@ -557,21 +557,43 @@ add_filter('pre_get_posts', 'search_filter');
 
 add_filter('post_gallery', 'phppr_custom_gallery', 10, 2);
 
-function phppr_custom_gallery($string,$attr) {
+function phppr_custom_gallery($string, $attr) {
     $currentPostTitle = get_the_title();
-    $output = "<aside class=\"gallery\">";
-    $posts = get_posts(array('include' => $attr['ids'], 'post_type' => 'attachment'));
+    $galleryColumns = $attr['columns'];
+    $galleryClass = (!empty($galleryColumns)) ? "gallery gallery--col-$galleryColumns" : "gallery";
     $resizer = Odin_Thumbnail_Resizer::get_instance();
-    $width = 170;
-    $height = 110;
 
-    foreach ($posts as $k => $imagePost) {
-        $origin_url = wp_get_attachment_image_src($imagePost->ID, 'full')[0];
+    switch ($galleryColumns) {
+        case 1:
+            $width = 730;
+            $height = 300;
+            break;
+        case 2:
+            $width = 345;
+            $height = 260;
+            break;
+        case 4:
+            $width = 345;
+            $height = 160;
+            break;
+        case 5:
+            $width = 140;
+            $height = 120;
+            break;
+        default: // default is 3 columns
+            $width = 345;
+            $height = 200;
+            break;
+    }
+
+    $output = "<aside class='$galleryClass'>";
+
+    foreach (explode(',', $attr['ids']) as $k => $imageId) {
+        $origin_url = wp_get_attachment_url( $imageId );
         $url = $resizer->process( $origin_url, $width, $height, true, true );
 
-        if ( !$url ) {
+        if ( !$url )
             $url = $origin_url;
-        }
 
         $imageCount = ($k + 1);
         $altTitle = "Image #$imageCount do artigo: $currentPostTitle";
