@@ -113,7 +113,7 @@
                     </article>
                 <?php endwhile; ?>
             </div>
-            <a href="#" class="card__view-all">Ver todos</a>
+            <!-- <a href="#" class="card__view-all">Ver todos</a> -->
         </div>
     </section>
 <?php endif; ?>
