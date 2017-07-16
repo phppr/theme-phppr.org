@@ -33,6 +33,19 @@
 	<?php else : ?>
 	    <?php if ( is_single() ) : ?>
             <div class="entry-content article__content card">
+                <figure class="article__image">
+                    <?php
+                    $postTitle = get_the_title();
+                    $thumbnail = odin_thumbnail( '730', '300', "Imagem do artigo: $postTitle", false, '', true);
+                    if ($thumbnail):
+                    $thumb = get_post_thumbnail_id();
+                    $origin_url = wp_get_attachment_url( $thumb );
+                    ?>
+                        <a href="<?php echo $origin_url; ?>">
+                            <?php echo $thumbnail ?>
+                        </a>
+                    <?php endif; ?>
+                </figure>
                 <?php
                     the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'odin' ) );
                     wp_link_pages( array(

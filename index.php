@@ -81,9 +81,15 @@
                     <article class="col-md-3">
                         <div class="article">
                             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="article__thumb">
+                                <?php
+                                $postTitle = get_the_title();
+                                $thumbnail = odin_thumbnail( '250', '190', "Imagem do artigo: $postTitle", true, '', true);
+                                if ($thumbnail):
+                                ?>
                                 <figure>
-                                    <?php echo odin_thumbnail( '250', '150', "Imagem do artigo {get_the_title()}", true, 'img-responsive') ?>
+                                    <?php echo $thumbnail ?>
                                 </figure>
+                                <?php endif; ?>
                             </a>
                             <header class="article__heading">
                                 <h2 class="article__title">
