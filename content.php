@@ -36,7 +36,7 @@
                 <figure class="article__image">
                     <?php
                     $postTitle = get_the_title();
-                    $thumbnail = odin_thumbnail( '730', '300', "Imagem do artigo: $postTitle", false, '', true);
+                    $thumbnail = odin_thumbnail( '730', '200', "Imagem do artigo: $postTitle", false, '', true);
                     if ($thumbnail):
                     $thumb = get_post_thumbnail_id();
                     $origin_url = wp_get_attachment_url( $thumb );
