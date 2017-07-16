@@ -93,16 +93,25 @@
                             <?php if (is_user_logged_in()): ?>
                                 <?php
                                 global $current_user;
-                                get_currentuserinfo();
+
+                                // get_currentuserinfo();
                                 $display_name = $current_user->display_name;
+                                $isAuthor = (in_array('administrator', $current_user->roles) || in_array('editor', $current_user->roles) || in_array('autor', $current_user->roles))
                                 ?>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        Olá <?php echo $display_name ?> <span class="caret"></span>
+                                        <span class="navbar__username">Olá <?php echo $display_name ?></span> <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo admin_url('/profile.php'); ?>">Editar meu perfil</a></li>
-                                        <li role="separator" class="divider"></li>
+                                        <?php if ($isAuthor): ?>
+                                            <li class="dropdown-header">Painel administrativo</li>
+                                            <li><a href="<?php echo admin_url('/'); ?>">Painel</a></li>
+                                            <li><a href="<?php echo admin_url('/edit.php'); ?>">Artigos da comunidade</a></li>
+                                            <li><a href="<?php echo admin_url('/edit.php?post_type=events'); ?>">Eventos</a></li>
+                                            <li><a href="<?php echo admin_url('/edit.php?post_type=notifications'); ?>">Notificações</a></li>
+                                        <?php endif; ?>
+                                        <li class="dropdown-header">Usuário</li>
+                                        <li><a href="<?php echo admin_url('/profile.php'); ?>"><i class="icon icon-pencil"></i> Editar meu perfil</a></li>
                                         <li><a href="<?php echo wp_logout_url(home_url()); ?>"><i class="icon icon-power-off"></i> Sair</a></li>
                                     </ul>
                                 </li>
