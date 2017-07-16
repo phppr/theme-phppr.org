@@ -555,9 +555,9 @@ function search_filter($query) {
 
 add_filter('pre_get_posts', 'search_filter');
 
-add_filter('post_gallery', 'customFormatGallery', 10, 2);
+add_filter('post_gallery', 'phppr_custom_gallery', 10, 2);
 
-function customFormatGallery($string,$attr) {
+function phppr_custom_gallery($string,$attr) {
     $currentPostTitle = get_the_title();
     $output = "<aside class=\"gallery\">";
     $posts = get_posts(array('include' => $attr['ids'], 'post_type' => 'attachment'));
@@ -566,7 +566,7 @@ function customFormatGallery($string,$attr) {
     $height = 110;
 
     foreach ($posts as $k => $imagePost) {
-        $origin_url = wp_get_attachment_image_src($imagePost->ID)[0];
+        $origin_url = wp_get_attachment_image_src($imagePost->ID, 'full')[0];
         $url = $resizer->process( $origin_url, $width, $height, true, true );
 
         if ( !$url ) {
