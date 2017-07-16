@@ -554,3 +554,32 @@ function search_filter($query) {
 }
 
 add_filter('pre_get_posts', 'search_filter');
+
+add_filter('post_gallery', 'customFormatGallery', 10, 2);
+
+function customFormatGallery($string,$attr) {
+    $currentPostTitle = get_the_title();
+    $output = "<aside class=\"gallery\">";
+    $posts = get_posts(array('include' => $attr['ids'], 'post_type' => 'attachment'));
+    $resizer = Odin_Thumbnail_Resizer::get_instance();
+    $width = 170;
+    $height = 110;
+
+    foreach ($posts as $k => $imagePost) {
+        $origin_url = wp_get_attachment_image_src($imagePost->ID)[0];
+        $url = $resizer->process( $origin_url, $width, $height, true, true );
+
+        if ( !$url ) {
+            $url = $origin_url;
+        }
+
+        $imageCount = ($k + 1);
+        $altTitle = "Image #$imageCount do artigo: $currentPostTitle";
+
+        $output .= "<a href='$origin_url' class='gallery-item' data-fancybox='group' data-caption='$altTitle' title='$altTitle'>";
+        $output .= "<img src='$url' alt='$altTitle' width='$width' height='$height'>";
+        $output .= "</a>";
+    }
+    $output .= "</aside>";
+    return $output;
+}
