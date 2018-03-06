@@ -1,6 +1,9 @@
-<h3 class="section__title section__title--cast"><a href="https://twitter.com/search?q=%23phppr&ref_src=twsrc%5Etfw" target="_blank"><i class="icon icon-twitter" aria-hidden="true"></i>  No twitter</a></h3>
+<h3 class="section__title section__title--cast">
+  <a href="https://twitter.com/phppr_org?ref_src=twsrc%5Etfw" target="_blank">
+    <i class="icon icon-twitter" aria-hidden="true"></i> No twitter
+  </a>
+</h3>
 <div class="card card--twitter">
-    <a class="twitter-timeline"  href="https://twitter.com/hashtag/phppr" data-widget-id="885286743494328320">phppr Tweets</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <a class="twitter-timeline" href="https://twitter.com/phppr_org?ref_src=twsrc%5Etfw">Tweets by phppr_org</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-
