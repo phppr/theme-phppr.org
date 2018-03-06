@@ -47,7 +47,6 @@
                         $phppr_social = get_option( 'phppr_social' );
                         $social = array(
                             'github' => $phppr_social['phppr_github'],
-                            'slack' => $phppr_social['phppr_slack'],
                             'twitter' => $phppr_social['phppr_twitter'],
                             'facebook' => $phppr_social['phppr_facebook'],
                         );
@@ -94,9 +93,6 @@
                             );
                         ?>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item nav-item--iframe">
-                                <script async defer src="//phppr.herokuapp.com/slackin.js"></script>
-                            </li>
                             <?php if (is_user_logged_in()): ?>
                                 <?php
                                 global $current_user;
